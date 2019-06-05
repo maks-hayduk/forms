@@ -1,8 +1,15 @@
 import React from 'react';
+import { Flex, Box } from '@rebass/grid';
+import Button from 'components/Button';
+import Input from 'components/Input';
 
 const App: React.FC = () => {
   return (
-   <h1>heya</h1>
+    <Flex flexDirection="column" justifyContent="space-around">
+      <Input />
+      <Input />
+      <Button> Click me </Button>
+    </Flex>
   );
 };
 
