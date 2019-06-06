@@ -1,15 +1,17 @@
 import React from 'react';
-import { Flex, Box } from '@rebass/grid';
-import Button from 'components/Button';
-import Input from 'components/Input';
+import { Switch, Route, Redirect } from 'react-router';
+import SignupPage from 'containers/Signup';
+import LoginPage from 'containers/Signin';
+import InitialPage from 'containers/InitialPage';
 
 const App: React.FC = () => {
   return (
-    <Flex flexDirection="column" justifyContent="space-around">
-      <Input />
-      <Input />
-      <Button> Click me </Button>
-    </Flex>
+    <Switch>
+      <Route path="/start" component={InitialPage} />
+      <Route path="/signup" component={SignupPage} />
+      <Route path="/login" component={LoginPage} />
+      <Redirect from="*" to="/start" />
+    </Switch>
   );
 };
 

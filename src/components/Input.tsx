@@ -1,11 +1,12 @@
 import styled from 'theme';
 
 const Input = styled.input`
-  width: 260px;
+  width: 100%;
+  max-width: 400px;
   height: 33px;
   padding-left: 10px;
-  font-size: 18px;
-  border: 2px solid ${props => props.theme.grayColor};
+  font-size: 15px;
+  border: 1px solid ${props => props.theme.grayColor};
   border-radius: 5px;
   :focus{
     outline: none;

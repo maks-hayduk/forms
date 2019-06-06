@@ -12,14 +12,14 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   (
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <GlobalStyles />
-      <ThemeProvider theme={theme}>
-        <App />
-      </ThemeProvider>
-    </ConnectedRouter>
-  </Provider>
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <GlobalStyles />
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
+      </ConnectedRouter>
+    </Provider>
   ), 
   document.getElementById('root')
 );
