@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'theme';
 import LoginForm from './LoginForm';
-import { IUserLoginAction } from 'store/domains';
+import { IHandleUserLogin } from 'store/domains';
 
 const DivWrapper = styled.div`
   height: 100vh;
@@ -13,14 +13,13 @@ const DivWrapper = styled.div`
 `;
 
 interface ILoginPage {
-  userLogin: IUserLoginAction;
-  currentToken: string;
+  userLogin: IHandleUserLogin;
 }
 
 const LoginPage: React.FC<ILoginPage> = (props) => {
   return(
     <DivWrapper>
-      <LoginForm handleUserLogin={props.userLogin} token={props.currentToken}/>
+      <LoginForm handleUserLogin={props.userLogin} />
     </DivWrapper>
   );
 };

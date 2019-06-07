@@ -12,9 +12,20 @@ export interface IUserLogin {
 }
 
 export interface IInitialAuthState {
+  token: string;
   isRegistered: boolean;
+  isAuthorized: boolean;
 }
 
-export interface IInitialLoginState {
-  token: string;
+export interface IInitialDataState {
+  company: {
+    createdAt: string;
+    name: string;
+    updatedAt: string;
+    _id: string;
+  };
+  email: string;
+  fullName: string;
+  role: 'user' | 'admin';
+  _id: string;
 }

@@ -1,32 +1,30 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
-import { ActionTypeKeys, UserLoginActionTypes } from '../actionTypes';
-import { IInitialAuthState, IInitialLoginState } from '../types';
+import { ActionTypeKeys, UserActionTypes } from '../actionTypes';
+import { IInitialAuthState } from '../types';
 
 const initialSignupState: ImmutableObject<IInitialAuthState> = Immutable({
-  isRegistered: false
+  token: '',
+  isRegistered: false,
+  isAuthorized: false
 });
 
-export const userSignup = (state = initialSignupState, action: UserLoginActionTypes) => {
+export const userAuth = (state = initialSignupState, action: UserActionTypes) => {
   switch (action.type) {
+    case ActionTypeKeys.USER_LOGOUT:
+      return initialSignupState;
+    case ActionTypeKeys.PULL_STORAGE_TOKEN:
+      return state
+        .setIn(['token'], action.token)
+        .setIn(['isAuthorized'], true);
     case ActionTypeKeys.USER_SIGNUP_FULFILLED:
-      console.log(action);
       return state
         .setIn(['isRegistered'], true);
-    default:
-      return state;
-  }
-};
-
-const initialLoginState: ImmutableObject<IInitialLoginState> = Immutable({
-  token: ''
-});
-
-export const userLogin = (state = initialLoginState, action: UserLoginActionTypes) => {
-  switch (action.type) {
-    case ActionTypeKeys.USER_LOGIN_FULFILLED:
+    case ActionTypeKeys.USER_LOGIN_FULFILLED: {
       return state
-        .setIn(['token'], action.payload);
+        .setIn(['token'], action.payload.token)
+        .setIn(['isAuthorized'], true);
+    }
     default:
       return state;
   }

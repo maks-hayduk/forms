@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import styled from 'theme';
 import InputField from 'components/InputField';
 import Button from 'components/Button';
-import { IUser, IUserSignupAction } from 'store/domains';
+import { IUser, IHandleUserSignup } from 'store/domains';
 
 const Div = styled.div`
 	min-height: 400px;
@@ -21,7 +21,6 @@ const Div = styled.div`
 	}
 
 	.input-container{
-    cursor: pointer;
 		margin-top: 13px;
   }
   
@@ -36,8 +35,7 @@ const Div = styled.div`
 `;
 
 interface ISignup {
-  handleUserSignup: IUserSignupAction;
-  handlePageChange: any;
+  handleUserSignup: IHandleUserSignup;
 }
 
 const Signup: React.FC<ISignup> = (props) => {
@@ -54,8 +52,6 @@ const Signup: React.FC<ISignup> = (props) => {
         }}
         onSubmit={async (values: IUser, action: FormikActions<IUser>) => {
           await props.handleUserSignup(values);
-          alert('Successfully registered');
-          await props.handlePageChange();
         }}
       >
         {() => (

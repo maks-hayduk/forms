@@ -8,6 +8,7 @@ const Input = styled.button`
   background-color: ${props => props.theme.blueColor};
   color: ${props => props.theme.whiteColor}
   border-radius: 5px;
+  cursor: pointer;
   :active{
     outline: none;
     background-color: ${props => props.theme.darkBlueColor};

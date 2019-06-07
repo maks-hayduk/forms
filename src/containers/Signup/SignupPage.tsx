@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'theme';
 import SignupForm from './SignupForm';
-import { IUserSignupAction } from 'store/domains';
+import { IHandleUserSignup } from 'store/domains';
 
 const DivWrapper = styled.div`
   height: 100vh;
@@ -13,14 +13,13 @@ const DivWrapper = styled.div`
 `;
 
 interface ISignupPage {
-  userSignup: IUserSignupAction;
-  handleUserSignup: any;
+  handleUserSignup: IHandleUserSignup;
 }
 
 const SignupPage: React.FC<ISignupPage> = (props) => {
   return(
     <DivWrapper>
-      <SignupForm handleUserSignup={props.userSignup} handlePageChange={props.handleUserSignup}/>
+      <SignupForm handleUserSignup={props.handleUserSignup}/>
     </DivWrapper>
   );
 };

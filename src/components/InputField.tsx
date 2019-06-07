@@ -10,6 +10,10 @@ const DivWrapper = styled.div`
     font-size: 13px;
     color: ${props => props.theme.grayColor};
   }
+  .error{
+    font-size: 14px;
+    color: red;
+  }
 `;
 
 interface IInput {
@@ -27,7 +31,7 @@ const InputField: React.FC<FieldProps<any> & IInput>  = ({
   <DivWrapper>
     <label htmlFor={id} className="label-input">{labelName}</label>
     <Input id={id} {...field} {...props}/>
-    {touched[field.name] && errors[field.name] && <div>{errors[field.name]}</div>}
+    {touched[field.name] && errors[field.name] && <div className="error">{errors[field.name]}</div>}
   </DivWrapper>
 );
 

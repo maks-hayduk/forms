@@ -8,3 +8,5 @@ export const userSignup = (data: IUser) => apiClient.post('/auth/signup', {
 export const userLogin = (data: IUserLogin) => apiClient.post('/auth/login', {
   data
 });
+
+export const userData = () => apiClient.get('/users/me');

@@ -1,6 +1,6 @@
-import { IInitialAuthState, IInitialLoginState } from './domains/user';
+import { IInitialAuthState, IInitialDataState } from './domains/user';
 
 export default interface IStoreState {
   auth: IInitialAuthState;
-  userLogin: IInitialLoginState;
+  data: IInitialDataState;
 }

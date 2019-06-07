@@ -13,7 +13,7 @@ const LinkWrapper = styled.div`
 
   .align-links{
     height: 35px;
-    width: 400px;
+    width: 600px;
     display: flex;
     justify-content: space-around;
   }
@@ -25,6 +25,9 @@ const InitialPage: React.FC = () => {
       <div className="align-links">
         <Link to="/login" style={{ textDecoration: 'none' }}>
           <CustomLink>Log in</CustomLink>
+        </Link>
+        <Link to="/dashboard" style={{ textDecoration: 'none' }}>
+          <CustomLink>Dashboard</CustomLink>
         </Link>
         <Link to="/signup" style={{ textDecoration: 'none' }}>
           <CustomLink>Sign up</CustomLink>
