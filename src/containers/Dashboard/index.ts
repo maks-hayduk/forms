@@ -4,20 +4,25 @@ import {
   getUserData, 
   hanldeUserLogout,
   handlePullStorageToken,
+  getDogs,
   selectUserData, 
-  selectAuthorization } from 'store/domains';
+  selectAuthorization,
+  selectDogs
+ } from 'store/domains';
 import IStoreState from 'store/IStoreState';
 import DashboardPage from './Dashboard';
 
 const mapStateToProps = (state: IStoreState) => ({
   data: selectUserData(state),
-  isAuthorized: selectAuthorization(state)
+  isAuthorized: selectAuthorization(state),
+  dogs: selectDogs(state)
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
   getUserData,
   hanldeUserLogout,
   handlePullStorageToken,
+  getDogs
 }, dispatch);
 
 const Dashboard = connect(mapStateToProps, mapDispatchToProps)(DashboardPage);

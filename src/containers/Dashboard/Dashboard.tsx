@@ -1,11 +1,27 @@
 import React from 'react';
+import styled from 'theme';
 import { 
   IInitialDataState, 
   IGetUserDataAction, 
   IHandleUserLogout, 
-  IHandlePullStorageToken 
+  IHandlePullStorageToken,
+  IGetDogsAction
 } from 'store/domains';
 import Button from 'components/Button';
+
+const Div = styled.div`
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+`;
+
+const Image = styled.img`
+  max-width: 200px;
+  max-height: 200px;
+  padding: 15px;
+`;
 
 interface IProps {
   data: IInitialDataState;
@@ -13,6 +29,8 @@ interface IProps {
   getUserData: IGetUserDataAction;
   handlePullStorageToken: IHandlePullStorageToken;
   hanldeUserLogout: IHandleUserLogout;
+  getDogs: IGetDogsAction;
+  dogs: string[];
 }
 
 class Dashboard extends React.Component <IProps> {
@@ -25,12 +43,23 @@ class Dashboard extends React.Component <IProps> {
   handleClick = async () => {
     await this.props.hanldeUserLogout();
   }
+  handleLoadDogs = async () => {
+    await this.props.getDogs();
+  }
   render() {
-    const { isAuthorized, data } = this.props;
+    const { isAuthorized, data, dogs } = this.props;
     return (
       <>
-        <h1>Hello {isAuthorized ? data.fullName : 'Guest'}</h1>
-        <Button onClick={this.handleClick}>Log out</Button>
+        <Div>
+          <span><h2>Hello, {isAuthorized ? data.fullName : null}</h2></span>
+          <Button onClick={this.handleClick} style={{ marginLeft: 20 }}>Log out</Button>
+        </Div>
+        <div style={{textAlign: 'center'}}>
+          <Button onClick={this.handleLoadDogs}>Load dogs</Button>
+        </div>
+        {dogs.map(dog => 
+          <Image src={dog} key={dog}/>
+        )}
       </>
     );
   }

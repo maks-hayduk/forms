@@ -33,16 +33,12 @@ export const userSignup: IUserSignupAction = (data: IUser) => ({
 
 export const handleUserSignup: IHandleUserSignup = (data) => 
   async (dispatch, getState) => {
-    try {
-      await dispatch(userSignup(data));
-      const state = getState();
-      if (state.auth.isRegistered) {
-        alert('Successfully registered');
-        dispatch(replace('/login'));
-      }
-    } catch (e) {
-      console.log(e);
-      alert(JSON.parse(e.text).error);
+    await dispatch(userSignup(data));
+    const state = getState();
+    if (state.auth.isRegistered) {
+      alert('Successfully registered');
+      dispatch(replace('/login'));
+    } else {
       dispatch(replace('/start'));
     }
   };

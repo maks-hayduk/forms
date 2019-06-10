@@ -6,6 +6,12 @@ import styled from 'theme';
 import InputField from 'components/InputField';
 import Button from 'components/Button';
 import { IUser, IHandleUserSignup } from 'store/domains';
+import { 
+  fullnameRegexp,
+  emailRegexp,
+  min3Symbols,
+  passRegexp
+ } from 'utils';
 
 const Div = styled.div`
 	min-height: 400px;
@@ -56,10 +62,10 @@ const Signup: React.FC<ISignup> = (props) => {
       >
         {() => (
           <Form>
-            <Field component={InputField} placeholder="Full name" name="fullName" id="fullName" labelName="Full name"/>
-            <Field component={InputField} type="email" placeholder="Email" name="email" id="email" labelName="Email"/>
-            <Field component={InputField} placeholder="Company code" name="companyCode" id="companyCode" labelName="Company code"/>
-            <Field component={InputField} type="password" placeholder="Password" name="password" id="password" labelName="Password"/>
+            <Field component={InputField} placeholder="Full name" name="fullName" validate={fullnameRegexp} id="fullName" labelName="Full name"/>
+            <Field component={InputField} type="email" placeholder="Email" name="email" validate={emailRegexp} id="email" labelName="Email"/>
+            <Field component={InputField} placeholder="Company code" name="companyCode" validate={min3Symbols} id="companyCode" labelName="Company code"/>
+            <Field component={InputField} type="password" placeholder="Password" name="password" validate={passRegexp} id="password" labelName="Password"/>
             <Field component={InputField} type="password" placeholder="Confirm password" name="confirmPassword" id="comfirmPassword" labelName="Confirm password"/>
             <Button type="submit" className="input-container">Register</Button>
           </Form>

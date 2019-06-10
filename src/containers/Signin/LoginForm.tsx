@@ -6,7 +6,10 @@ import styled from 'theme';
 import InputField from 'components/InputField';
 import Button from 'components/Button';
 import { IUserLogin, IHandleUserLogin } from 'store/domains';
-import { min8Symbold } from 'utils';
+import { 
+  emailRegexp,
+  passRegexp
+ } from 'utils';
 
 const Div = styled.div`
 	min-height: 200px;
@@ -54,8 +57,8 @@ const Login: React.FC<ILogin> = (props) => {
       >
         {() => (
           <Form>
-            <Field component={InputField} type="email" placeholder="Email" name="email" validate={min8Symbold} id="email" labelName="Email"/>
-            <Field component={InputField} type="password" placeholder="Password" name="password" id="password" labelName="Password"/>
+            <Field component={InputField} type="email" placeholder="Email" name="email" validate={emailRegexp} id="email" labelName="Email"/>
+            <Field component={InputField} type="password" placeholder="Password" name="password" validate={passRegexp} id="password" labelName="Password"/>
             <Button type="submit" className="input-container">Login</Button>
           </Form>
         )}

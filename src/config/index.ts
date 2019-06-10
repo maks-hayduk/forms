@@ -5,7 +5,7 @@ const {
 interface IConfig {
   isDevelopment: boolean;
   apiUrl: string;
-  apiHost: string;
+  dogApiUrl: string;
 }
 
 let config: IConfig;
