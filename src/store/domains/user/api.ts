@@ -1,7 +1,7 @@
 import { apiClient } from 'services';
-import { IUser, IUserLogin } from './types';
+import { IUserSignup, IUserLogin } from './types';
 
-export const userSignup = (data: IUser) => apiClient.post('/auth/signup', {
+export const userSignup = (data: IUserSignup) => apiClient.post('/auth/signup', {
   data
 });
 

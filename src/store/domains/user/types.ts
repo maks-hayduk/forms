@@ -1,4 +1,4 @@
-export interface IUser {
+export interface IUserSignup {
   fullName: string;
   email: string;
   companyCode: string;

@@ -1,11 +1,11 @@
 //tslint:disable
 import React from 'react';
-import { Formik, Field, Form, ErrorMessage, FormikActions } from 'formik';
+import { Formik, Field, Form } from 'formik';
 import { Link } from 'react-router-dom';
 import styled from 'theme';
 import InputField from 'components/InputField';
 import Button from 'components/Button';
-import { IUser, IHandleUserSignup } from 'store/domains';
+import { IUserSignup, IHandleUserSignup } from 'store/domains';
 import { 
   fullnameRegexp,
   emailRegexp,
@@ -56,7 +56,7 @@ const Signup: React.FC<ISignup> = (props) => {
           password: '',
           confirmPassword: ''
         }}
-        onSubmit={async (values: IUser, action: FormikActions<IUser>) => {
+        onSubmit={async (values: IUserSignup) => {
           await props.handleUserSignup(values);
         }}
       >

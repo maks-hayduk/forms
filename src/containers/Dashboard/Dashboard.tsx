@@ -10,17 +10,22 @@ import {
 import Button from 'components/Button';
 
 const Div = styled.div`
-  width: 100%;
-  margin-top: 10px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-`;
-
-const Image = styled.img`
-  max-width: 200px;
-  max-height: 200px;
-  padding: 15px;
+  .header{
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .align-load-button{
+    margin: 15px 0;
+    text-align: center;
+  }
+  .image{
+    max-width: 200px;
+    max-height: 200px;
+    padding: 15px;
+  }
 `;
 
 interface IProps {
@@ -49,18 +54,18 @@ class Dashboard extends React.Component <IProps> {
   render() {
     const { isAuthorized, data, dogs } = this.props;
     return (
-      <>
-        <Div>
+      <Div>
+        <div className="header">
           <span><h2>Hello, {isAuthorized ? data.fullName : null}</h2></span>
           <Button onClick={this.handleClick} style={{ marginLeft: 20 }}>Log out</Button>
-        </Div>
-        <div style={{textAlign: 'center'}}>
+        </div>
+        <div className="align-load-button">
           <Button onClick={this.handleLoadDogs}>Load dogs</Button>
         </div>
         {dogs.map(dog => 
-          <Image src={dog} key={dog}/>
+          <img src={dog} key={dog} className="image"/>
         )}
-      </>
+      </Div>
     );
   }
 }

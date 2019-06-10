@@ -1,6 +1,6 @@
 //tslint:disable
 import React from 'react';
-import { Formik, Field, Form, FormikActions } from 'formik';
+import { Formik, Field, Form } from 'formik';
 import { Link } from 'react-router-dom';
 import styled from 'theme';
 import InputField from 'components/InputField';
@@ -51,7 +51,7 @@ const Login: React.FC<ILogin> = (props) => {
           email: '',
           password: ''
         }}
-        onSubmit={async (values: IUserLogin, action: FormikActions<IUserLogin>) => {
+        onSubmit={async (values: IUserLogin) => {
           await props.handleUserLogin(values);
         }}
       >

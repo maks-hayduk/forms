@@ -1,4 +1,4 @@
-export interface IInitialDogState {
+export interface IInitialDogsState {
   status: string;
   message: string[];
 }

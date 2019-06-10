@@ -2,7 +2,7 @@ import { ThunkAction } from 'redux-thunk';
 import { AnyAction } from 'redux';
 import { replace } from 'react-router-redux';
 import * as api from './api';
-import { IUser, IUserLogin } from './types';
+import { IUserSignup, IUserLogin } from './types';
 import {
   ActionTypeKeys,
   IUserLoginActionType,
@@ -16,17 +16,21 @@ import { apiClient } from 'services';
 
 export type Thunk<R> = ThunkAction<R, IStoreState, {}, AnyAction>;
 
-export type IUserSignupAction = (data: IUser) => IUserSignupActionType;
-export type IHandleUserSignup = (data: IUser) => Thunk<void>;
+export type IUserSignupAction = (data: IUserSignup) => IUserSignupActionType;
+export type IHandleUserSignup = (data: IUserSignup) => Thunk<void>;
+
 export type IUserLoginAction = (data: IUserLogin) => IUserLoginActionType;
 export type IHandleUserLogin = (data: IUserLogin) => Thunk<void>;
+
 export type IGetUserDataAction = () => IGetUserDataActionType;
+
 export type IUserLogoutAction = () => IUserLogoutActionType;
 export type IHandleUserLogout = () => Thunk<void>;
+
 export type IPullStorageTokenAction = (token: string | null) => IPullStorageTokenActionType;
 export type IHandlePullStorageToken = () => Thunk<void>;
 
-export const userSignup: IUserSignupAction = (data: IUser) => ({
+export const userSignup: IUserSignupAction = (data: IUserSignup) => ({
   type: ActionTypeKeys.USER_SIGNUP,
   payload: api.userSignup(data)
 });

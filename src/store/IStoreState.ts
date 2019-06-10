@@ -1,7 +1,11 @@
-import { IInitialAuthState, IInitialDataState, IInitialDogState } from './domains';
+import { 
+  IInitialAuthState, 
+  IInitialDataState, 
+  IInitialDogsState 
+} from './domains';
 
 export default interface IStoreState {
   auth: IInitialAuthState;
   data: IInitialDataState;
-  dogs: IInitialDogState;
+  dogs: IInitialDogsState;
 }

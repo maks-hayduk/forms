@@ -1,4 +1,4 @@
-import { IInitialDogState } from './types';
+import { IInitialDogsState } from './types';
 
 export enum ActionTypeKeys {
   GET_DOGS = 'dogs/GET_DOGS',
@@ -8,12 +8,12 @@ export enum ActionTypeKeys {
 
 export interface IDogsActionType {
   type: ActionTypeKeys.GET_DOGS;
-  payload: Promise<IInitialDogState>;
+  payload: Promise<IInitialDogsState>;
 }
 
 export interface IDogsFulfilledActionType {
   type: ActionTypeKeys.GET_DOGS_FULFILLED;
-  payload: IInitialDogState;
+  payload: IInitialDogsState;
 }
 
 export interface IDogsRejectedActionType {
