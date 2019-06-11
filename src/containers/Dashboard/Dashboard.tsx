@@ -45,22 +45,16 @@ class Dashboard extends React.Component <IProps> {
       this.props.getUserData();
     }
   }
-  handleClick = async () => {
-    await this.props.hanldeUserLogout();
-  }
-  handleLoadDogs = async () => {
-    await this.props.getDogs();
-  }
   render() {
     const { isAuthorized, data, dogs } = this.props;
     return (
       <Div>
         <div className="header">
           <span><h2>Hello, {isAuthorized ? data.fullName : null}</h2></span>
-          <Button onClick={this.handleClick} style={{ marginLeft: 20 }}>Log out</Button>
+          <Button onClick={async () => await this.props.hanldeUserLogout()}>Log out</Button>
         </div>
         <div className="align-load-button">
-          <Button onClick={this.handleLoadDogs}>Load dogs</Button>
+          <Button onClick={async () => await this.props.getDogs()}>Load dogs</Button>
         </div>
         {dogs.map(dog => 
           <img src={dog} key={dog} className="image"/>

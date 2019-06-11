@@ -1,4 +1,3 @@
-//tslint:disable
 import React from 'react';
 import { Formik, Field, Form } from 'formik';
 import { Link } from 'react-router-dom';

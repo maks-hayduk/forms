@@ -13,6 +13,7 @@ import {
 } from './actionTypes';
 import IStoreState from 'store/IStoreState';
 import { apiClient } from 'services';
+import { RoutesTypeKeys } from 'consts';
 
 export type Thunk<R> = ThunkAction<R, IStoreState, {}, AnyAction>;
 
@@ -41,9 +42,9 @@ export const handleUserSignup: IHandleUserSignup = (data) =>
     const state = getState();
     if (state.auth.isRegistered) {
       alert('Successfully registered');
-      dispatch(replace('/login'));
+      dispatch(replace(RoutesTypeKeys.Login));
     } else {
-      dispatch(replace('/start'));
+      dispatch(replace(RoutesTypeKeys.Start));
     }
   };
 
@@ -59,7 +60,7 @@ export const handleUserLogin: IHandleUserLogin = (data) =>
     if (state.auth.token !== '') {
       localStorage.setItem('token', state.auth.token);
       apiClient.setDefaultHeaders('Authorization', state.auth.token);
-      dispatch(replace('/dashboard'));
+      dispatch(replace(RoutesTypeKeys.Dashboard));
     }
   };
 
@@ -77,7 +78,7 @@ export const hanldeUserLogout: IHandleUserLogout = () =>
     await dispatch(userLogout());
     localStorage.removeItem('token');
     apiClient.setDefaultHeaders('Authorization', '');
-    dispatch(replace('/start'));
+    dispatch(replace(RoutesTypeKeys.Start));
   };
 
 export const pullStorageToken: IPullStorageTokenAction = (token: string | null) => ({
@@ -93,6 +94,6 @@ export const handlePullStorageToken: IHandlePullStorageToken = () =>
       const state = getState();
       apiClient.setDefaultHeaders('Authorization', state.auth.token);
     } else {
-      dispatch(replace('/login'));
+      dispatch(replace(RoutesTypeKeys.Login));
     }
   };

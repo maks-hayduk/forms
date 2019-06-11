@@ -1,6 +1,8 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'theme';
 
-const LinkWrapper = styled.div`
+const CustomLink = styled.div`
   height: 35px;
   width: 100px;
   border-radius: 5px;
@@ -14,4 +16,17 @@ const LinkWrapper = styled.div`
     background-color: ${props => props.theme.darkBlueColor};
 `;
 
-export default LinkWrapper;
+interface ICLink {
+  to: string;
+}
+
+const CLink: React.FC<ICLink> = (props) => {
+  return(
+    <Link to={props.to} style={{ textDecoration: 'none' }}>
+      <CustomLink>{props.children}</CustomLink>
+    </Link>
+  );
+
+}
+
+export default CLink;
